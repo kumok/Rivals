@@ -7,6 +7,8 @@
 //
 
 #import "RIAppDelegate.h"
+#import "RIByuViewController.h"
+#import "RIUtahViewController.h"
 
 @implementation RIAppDelegate
 
@@ -14,7 +16,27 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    
+
+    RIByuViewController *byuViewController = [[RIByuViewController alloc] init];
+    RIUtahViewController *utahViewController = [[RIUtahViewController alloc] init];
+    byuViewController.tabBarItem.title = @"BYU";
+    byuViewController.tabBarItem.image = [UIImage imageNamed:@"BYU"];
+
+    utahViewController.tabBarItem.title = @"Utah";
+    utahViewController.tabBarItem.image = [UIImage imageNamed:@"UTAH"];
+    
+    
+    UITabBarController *tabBar = [UITabBarController new];
+    tabBar.viewControllers = @[byuViewController, utahViewController];
+    
+    
+
+    self.window.rootViewController = tabBar;
+    
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
